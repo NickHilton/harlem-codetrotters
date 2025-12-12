@@ -30,7 +30,7 @@ def extract_topics(paragraph):
         messages=[
             {
                 "role": "user",
-                "content": f"Extract the main topics from this paragraph:\n\n{paragraph}"
+                "content": f"Extract the main topics from this paragraph:\n\n{paragraph} and return a comma seperated list of the top 3 topics"
             }
         ]
     )

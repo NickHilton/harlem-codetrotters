@@ -6,6 +6,7 @@ from nltk.tokenize import word_tokenize
 import string
 nltk.download('stopwords')
 nltk.download('punkt')
+nltk.download('punkt_tab')
 
 from transcript import parse_data_openai
 
@@ -32,7 +33,7 @@ def remove_punctuation(input_text):
     clean_text = input_text.translate(translator)
     return clean_text
 
-with open("../data/sample_data.txt") as f:
+with open("./transcript/primary_debate_transcript.txt") as f:
     data = f.readlines()
     data = [d.strip() for d in data if len(d.strip()) > 0]
     results = []
@@ -67,7 +68,7 @@ with open("../data/sample_data.txt") as f:
         results.append(single_entry)
         i += 2
 
-pd.DataFrame(results).to_csv("../data/cleaned_data.csv", index=False)
+pd.DataFrame(results).to_csv("./data/cleaned_data.csv", index=False)
 
 
 
