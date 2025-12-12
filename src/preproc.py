@@ -7,6 +7,8 @@ import string
 nltk.download('stopwords')
 nltk.download('punkt')
 
+from transcript import parse_data_openai
+
 def get_time(time_str_input):
     time_str_input = time_str_input.replace("\n", "")
     time_str_input = time_str_input[1:-2]
@@ -15,8 +17,7 @@ def get_time(time_str_input):
 
 def classify_text(text_input, model):
     text_input = text_input.replace("\n", "")
-    labels = f"{model}"
-    # labels = model.extract_keywords(text_input, keyphrase_ngram_range=(1, 3), stop_words="english", top_n=12)
+    labels = parse_data_openai.extract_topics(text_input)
     return labels
 
 def remove_stop_words(input_text):
